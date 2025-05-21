@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STUDI KASUS: KAMPUNG MILIARDER TUBAN</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e6d5b8, #c4b092);
+    color: #3e2f16;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+  /* Background branches / wood texture stylized using SVG embedded */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 80 Q40 10 70 80" stroke="%23654317" stroke-width="2" fill="none"/></svg>'),
+      linear-gradient(135deg, #e6d5b8, #c4b092);
+    background-repeat: repeat, no-repeat;
+    background-position: center, center;
+    background-size: 150px 150px, cover;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+  h1 {
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    line-height: 1;
+    z-index: 1;
+  }
+  h1 .line1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #6b4b1a;
+    text-shadow: 1px 1px 2px #c9b48f;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+  }
+  h1 .line2 {
+    font-size: 3.8rem;
+    font-weight: 900;
+    color: #3e2f16;
+    text-shadow:
+      2px 2px 5px rgba(180, 150, 90, 0.7),
+      0 0 15px #945f16aa;
+  }
+
+  .container {
+    background-color: #fdf6e3cc;
+    box-shadow:
+      0 10px 25px rgba(70, 50, 20, 0.3);
+    border-radius: 20px;
+    max-width: 720px;
+    width: 100%;
+    padding: 2rem 2.5rem 3rem 2.5rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    position: relative;
+    z-index: 1;
+  }
+
+  form > div.field-group {
+    margin-bottom: 1.5rem;
+  }
+  label {
+    font-weight: 600;
+    font-size: 1.25rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #5a4a20;
+  }
+  input[type="text"] {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: 2px solid #a99873;
+    font-family: inherit;
+    box-shadow: inset 2px 2px 5px #f4f0e3;
+    transition: border-color 0.3s ease;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #93682d;
+    background-color: #fff8dc;
+  }
+  textarea {
+    width: 100%;
+    height: 260px;
+    border-radius: 16px;
+    border: 2px solid #a99873;
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+    font-family: inherit;
+    resize: vertical;
+    box-shadow: inset 2px 2px 8px #f5f2e7;
+    transition: border-color 0.3s ease;
+    color: #3e2f16;
+  }
+  textarea:focus {
+    outline: none;
+    border-color: #93682d;
+    background-color: #fff8dc;
+  }
+
+  .btn-submit {
+    margin-top: 1.5rem;
+    background: #836e3c;
+    color: #f6f1e7;
+    border: none;
+    border-radius: 18px;
+    padding: 0.75rem 2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow:
+      0 5px 12px rgba(131, 110, 60, 0.7);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    width: 100%;
+  }
+  .btn-submit:hover {
+    background: #705b34;
+    box-shadow:
+      0 8px 20px rgba(112, 91, 52, 0.9);
+  }
+
+  .success-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #4BB543DD;
+    border-radius: 18px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(75, 181, 67, 0.7);
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    h1 .line1 {
+      font-size: 1.8rem;
+    }
+    h1 .line2 {
+      font-size: 2.8rem;
+    }
+    textarea {
+      height: 180px;
+    }
+  }
+
+</style>
+</head>
+<body>
+  <h1>
+    <div class="line1">STUDI KASUS:</div>
+    <div class="line2">KAMPUNG MILIARDER TUBAN</div>
+  </h1>
+  <div class="container">
+    <form id="answerForm">
+      <div class="field-group">
+        <label for="name">Nama</label>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required minlength="2" autocomplete="off" />
+      </div>
+      <div class="field-group">
+        <label for="class">Kelas</label>
+        <input type="text" id="class" name="class" placeholder="Masukkan kelas Anda" required minlength="1" maxlength="10" autocomplete="off" />
+      </div>
+      <div class="field-group">
+        <label for="answer">Jawaban Anda:</label>
+        <textarea id="answer" name="answer" placeholder="tulis jawaban anda tentang kasus kampung miliarder tuban di sini..." required spellcheck="true" minlength="30"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Kirim Jawaban</button>
+    </form>
+    <div class="success-message" id="successMessage">Jawaban sudah tersimpan, silahkan kembali ke aplikasi PESAT ^-^</div>
+  </div>
+
+  
+<script>
+  const form = document.getElementById('answerForm');
+  const successMessage = document.getElementById('successMessage');
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzgqlHmm_MCnSUW3rA9hEC4za9wGoya0q8w-N29rrFeoa_vPAbyTnyMH3EyD4M1mrvN/exec';
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = {
+      name: form.name.value.trim(),
+      class: form.class.value.trim(),
+      answer: form.answer.value.trim()
+    };
+
+    if (data.name.length < 2) {
+      alert("Harap masukkan nama yang valid (minimal 2 karakter).");
+      return;
+    }
+    if (data.class.length < 1) {
+      alert("Harap masukkan kelas Anda.");
+      return;
+    }
+    if (data.answer.length < 30) {
+      alert("Harap masukkan jawaban minimal 30 karakter.");
+      return;
+    }
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        form.style.display = 'none';
+        successMessage.style.display = 'block';
+      } else {
+        alert('Gagal menyimpan jawaban. Silakan coba lagi.');
+      }
+    })
+    .catch(error => {
+      alert('Terjadi kesalahan koneksi: ' + error.message);
+    });
+  });
+</script>
+
+</body>
+</html>
